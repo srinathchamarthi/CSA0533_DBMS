@@ -1,0 +1,68 @@
+mysql> create table student
+    -> ( student_id int not null,
+    -> student_name varchar(20) not null,
+    -> gender varchar(10) not null,
+    -> marks int not null,
+    ->
+    -> primary key (student_id)
+    -> );
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(7)      | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| mark  | int(3)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> alter table student
+    -> add age int(2);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int(7)      | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| mark  | int(3)      | YES  |     | NULL    |       |
+| age   | int(2)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table student
+    -> add mobile_no int(11);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(7)      | YES  |     | NULL    |       |
+| name      | varchar(20) | YES  |     | NULL    |       |
+| mark      | int(3)      | YES  |     | NULL    |       |
+| age       | int(2)      | YES  |     | NULL    |       |
+| mobile_no | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table student
+    -> add primary key(id);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(7)      | NO   | PRI | 0       |       |
+| name      | varchar(20) | YES  |     | NULL    |       |
+| mark      | int(3)      | YES  |     | NULL    |       |
+| age       | int(2)      | YES  |     | NULL    |       |
+| mobile_no | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)

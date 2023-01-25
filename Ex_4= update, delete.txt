@@ -1,0 +1,82 @@
+
+mysql> use college;
+Database changed
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(7)      | NO   | PRI | 0       |       |
+| name      | varchar(20) | YES  |     | NULL    |       |
+| mark      | int(3)      | YES  |     | NULL    |       |
+| age       | int(2)      | YES  |     | NULL    |       |
+| mobile_no | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student values(04, "srinath", 84, 22, 123456789);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+1 row in set (0.01 sec)
+
+mysql> insert into student values(3, "azay", 85, 21, 987654321);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  3 | azay    |   85 |   21 | 987654321 |
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+2 rows in set (0.00 sec)
+
+
+mysql> update student set name="yogi" where id=3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  3 | yogi    |   85 |   21 | 987654321 |
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> delete from student where age="21";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values(3, "azay", 85, 21, 987654321);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(1, "yogi", 84, 22, 126789);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(5, "akshay", 84, 22, 999999999);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  1 | yogi    |   84 |   22 |    126789 |
+|  3 | azay    |   85 |   21 | 987654321 |
+|  4 | srinath |   84 |   22 | 123456789 |
+|  5 | akshay  |   84 |   22 | 999999999 |
++----+---------+------+------+-----------+
+4 rows in set (0.00 sec)

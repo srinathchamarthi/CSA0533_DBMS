@@ -1,0 +1,90 @@
+
+mysql> use college;
+Database changed
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(7)      | NO   | PRI | 0       |       |
+| name      | varchar(20) | YES  |     | NULL    |       |
+| mark      | int(3)      | YES  |     | NULL    |       |
+| age       | int(2)      | YES  |     | NULL    |       |
+| mobile_no | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student values(04, "srinath", 84, 22, 123456789);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+1 row in set (0.01 sec)
+
+mysql> insert into student values(3, "azay", 85, 21, 987654321);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(4, "srinath", 84, 22, 123456789);
+ERROR 1062 (23000): Duplicate entry '4' for key 'PRIMARY'
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  3 | azay    |   85 |   21 | 987654321 |
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+2 rows in set (0.00 sec)
+
+
+mysql> use college;
+Database changed
+mysql> desc student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int(7)      | NO   | PRI | 0       |       |
+| name      | varchar(20) | YES  |     | NULL    |       |
+| mark      | int(3)      | YES  |     | NULL    |       |
+| age       | int(2)      | YES  |     | NULL    |       |
+| mobile_no | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student values(04, "srinath", 84, 22, 123456789);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+1 row in set (0.01 sec)
+
+mysql> insert into student values(3, "azay", 85, 21, 987654321);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(4, "srinath", 84, 22, 123456789);
+ERROR 1062 (23000): Duplicate entry '4' for key 'PRIMARY'
+mysql> select * from student;
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  3 | azay    |   85 |   21 | 987654321 |
+|  4 | srinath |   84 |   22 | 123456789 |
++----+---------+------+------+-----------+
+2 rows in set (0.00 sec)
+
+
+mysql> select * from student where age="22";
++----+---------+------+------+-----------+
+| id | name    | mark | age  | mobile_no |
++----+---------+------+------+-----------+
+|  1 | yogi    |   84 |   22 |    126789 |
+|  4 | srinath |   84 |   22 | 123456789 |
+|  5 | akshay  |   84 |   22 | 999999999 |
++----+---------+------+------+-----------+
+3 rows in set (0.00 sec)
