@@ -1,0 +1,83 @@
+
+mysql> use college;
+Database changed
+mysql> select * from student;
++----+--------+------+------+-----------+
+| id | name   | mark | age  | mobile_no |
++----+--------+------+------+-----------+
+|  1 | gdfghw |   84 |   22 |    126789 |
+|  3 | azay   |   85 |   21 | 987654321 |
+|  4 | gdfghw |   84 |   22 | 123456789 |
+|  5 | akshay |   84 |   22 | 999999999 |
++----+--------+------+------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student values(6, "srinath_chamarthi", 90,24, 098765432);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+-------------------+------+------+-----------+
+| id | name              | mark | age  | mobile_no |
++----+-------------------+------+------+-----------+
+|  1 | gdfghw            |   84 |   22 |    126789 |
+|  3 | azay              |   85 |   21 | 987654321 |
+|  4 | gdfghw            |   84 |   22 | 123456789 |
+|  5 | akshay            |   84 |   22 | 999999999 |
+|  6 | srinath_chamarthi |   90 |   24 |  98765432 |
++----+-------------------+------+------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student where name like 'a%c';
+Empty set (0.00 sec)
+
+mysql> select * from student;
++----+-------------------+------+------+-----------+
+| id | name              | mark | age  | mobile_no |
++----+-------------------+------+------+-----------+
+|  1 | gdfghw            |   84 |   22 |    126789 |
+|  3 | azay              |   85 |   21 | 987654321 |
+|  4 | gdfghw            |   84 |   22 | 123456789 |
+|  5 | akshay            |   84 |   22 | 999999999 |
+|  6 | srinath_chamarthi |   90 |   24 |  98765432 |
++----+-------------------+------+------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student where name like 'a%';
++----+--------+------+------+-----------+
+| id | name   | mark | age  | mobile_no |
++----+--------+------+------+-----------+
+|  3 | azay   |   85 |   21 | 987654321 |
+|  5 | akshay |   84 |   22 | 999999999 |
++----+--------+------+------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name like '%c';
+Empty set (0.00 sec)
+
+mysql> select * from student where name like '%y';
++----+--------+------+------+-----------+
+| id | name   | mark | age  | mobile_no |
++----+--------+------+------+-----------+
+|  3 | azay   |   85 |   21 | 987654321 |
+|  5 | akshay |   84 |   22 | 999999999 |
++----+--------+------+------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name like 'a%y';
++----+--------+------+------+-----------+
+| id | name   | mark | age  | mobile_no |
++----+--------+------+------+-----------+
+|  3 | azay   |   85 |   21 | 987654321 |
+|  5 | akshay |   84 |   22 | 999999999 |
++----+--------+------+------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name not like 'a%y';
++----+-------------------+------+------+-----------+
+| id | name              | mark | age  | mobile_no |
++----+-------------------+------+------+-----------+
+|  1 | gdfghw            |   84 |   22 |    126789 |
+|  4 | gdfghw            |   84 |   22 | 123456789 |
+|  6 | srinath_chamarthi |   90 |   24 |  98765432 |
++----+-------------------+------+------+-----------+
+3 rows in set (0.01 sec)
