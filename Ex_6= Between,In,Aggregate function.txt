@@ -1,0 +1,67 @@
+
+mysql> select * from device;
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
++----+---------+-----------+------------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from device where price between 10000 and 30000;
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
++----+---------+-----------+------------+-----------+-------+
+3 rows in set (0.02 sec)
+
+mysql> select * from device where price in (1000,30000,50000);
++----+------+-----------+------------+-----------+-------+
+| id | name | serial_no | model_name | user_name | price |
++----+------+-----------+------------+-----------+-------+
+|  2 | vivo |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo |     12345 | ran        | yogesh    | 30000 |
++----+------+-----------+------------+-----------+-------+
+2 rows in set (0.01 sec)
+
+mysql> select * from device where price in (10000,30000,50000);
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
++----+---------+-----------+------------+-----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select count(name) from device;
++-------------+
+| count(name) |
++-------------+
+|           5 |
++-------------+
+1 row in set (0.01 sec)
+mysql> select sum(price) as "total price" from device;
++-------------+
+| total price |
++-------------+
+|      160000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select avg(price) as "average price" from device;
++---------------+
+| average price |
++---------------+
+|    32000.0000 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql>
