@@ -1,0 +1,107 @@
+ for the right syntax to use near 'company' at line 1
+mysql> create database publishing_company;
+Query OK, 1 row affected (0.01 sec)
+
+
+Database changed
+
+mysql> create table books (
+    -> book_name varchar(30),
+    -> book_id int,
+    -> book_price int,
+    -> address varchar(30),
+    -> author_name varchar(20),
+    -> primary key(book_id)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc books
+    -> \c
+mysql> desc books;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| book_name   | varchar(30) | YES  |     | NULL    |       |
+| book_id     | int(11)     | NO   | PRI | 0       |       |
+| book_price  | int(11)     | YES  |     | NULL    |       |
+| address     | varchar(30) | YES  |     | NULL    |       |
+| author_name | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> insert into books values("dbms", 1, 2000,"chennai", "srinath");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into books values("dwdm", 2, 2000,"tirupati", "azay");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into books values("cloud", 3, 4000,"tirupati", "akshay");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from books;
++-----------+---------+------------+----------+-------------+
+| book_name | book_id | book_price | address  | author_name |
++-----------+---------+------------+----------+-------------+
+| dbms      |       1 |       2000 | chennai  | srinath     |
+| dwdm      |       2 |       2000 | tirupati | azay        |
+| cloud     |       3 |       4000 | tirupati | akshay      |
++-----------+---------+------------+----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> delete from books where book_price="2000";
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> select * from books;
++-----------+---------+------------+----------+-------------+
+| book_name | book_id | book_price | address  | author_name |
++-----------+---------+------------+----------+-------------+
+| cloud     |       3 |       4000 | tirupati | akshay      |
++-----------+---------+------------+----------+-------------+
+1 row in set (0.00 sec)
+
+
+mysql> update books set book_name="datawarehous" where book_id=2;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from books;
++-----------+---------+------------+----------+-------------+
+| book_name | book_id | book_price | address  | author_name |
++-----------+---------+------------+----------+-------------+
+| cloud     |       3 |       4000 | tirupati | akshay      |
++-----------+---------+------------+----------+-------------+
+1 row in set (0.00 sec)
+mysql> use publishing_company;
+Database changed
+mysql> select * from books;
++-----------+---------+------------+----------+-------------+
+| book_name | book_id | book_price | address  | author_name |
++-----------+---------+------------+----------+-------------+
+| cloud     |       3 |       4000 | tirupati | akshay      |
++-----------+---------+------------+----------+-------------+
+1 row in set (0.00 sec)
+mysql>  insert into books values("dbms", 1, 2000,"chennai", "srinath");
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into books values("dwdm", 2, 2000,"tirupati", "azay");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from books;
++-----------+---------+------------+----------+-------------+
+| book_name | book_id | book_price | address  | author_name |
++-----------+---------+------------+----------+-------------+
+| dbms      |       1 |       2000 | chennai  | srinath     |
+| dwdm      |       2 |       2000 | tirupati | azay        |
+| cloud     |       3 |       4000 | tirupati | akshay      |
++-----------+---------+------------+----------+-------------+
+3 rows in set (0.00 sec)
+mysql> select book_name,book_price from books where address="tirupati";
++-----------+------------+
+| book_name | book_price |
++-----------+------------+
+| dwdm      |       2000 |
+| cloud     |       4000 |
++-----------+------------+
+2 rows in set (0.00 sec)
+
+mysql>
