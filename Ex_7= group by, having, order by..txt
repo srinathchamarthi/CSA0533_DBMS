@@ -1,0 +1,107 @@
+
+mysql> use mobiles;
+Database changed
+mysql> select * from device;
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
++----+---------+-----------+------------+-----------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select count(id),name from device group by name;
++-----------+---------+
+| count(id) | name    |
++-----------+---------+
+|         1 | apple   |
+|         1 | iqoo    |
+|         2 | samsung |
+|         1 | vivo    |
++-----------+---------+
+4 rows in set (0.01 sec)
+
+mysql> select count(id),name from device group by name order by count(id);
++-----------+---------+
+| count(id) | name    |
++-----------+---------+
+|         1 | vivo    |
+|         1 | iqoo    |
+|         1 | apple   |
+|         2 | samsung |
++-----------+---------+
+4 rows in set (0.01 sec)
+
+mysql> select * from device group by name;
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 |
++----+---------+-----------+------------+-----------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select count(user_name),price from device group by price;
++------------------+-------+
+| count(user_name) | price |
++------------------+-------+
+|                2 | 10000 |
+|                1 | 30000 |
+|                1 | 50000 |
+|                1 | 60000 |
++------------------+-------+
+4 rows in set (0.00 sec)
+
+4
+
+mysql> select * from device;
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
++----+---------+-----------+------------+-----------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> select count(name),price
+    -> from device
+    -> group by price
+    -> having count(name) > 3;
+Empty set (0.00 sec)
+
+mysql> select count(name),price
+    -> from device
+    -> group by price
+    -> having count(id) < 3;
++-------------+-------+
+| count(name) | price |
++-------------+-------+
+|           2 | 10000 |
+|           1 | 30000 |
+|           1 | 50000 |
+|           1 | 60000 |
++-------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select count(name),price
+    -> from device
+    -> group by price
+    -> having count(id) > 1;
++-------------+-------+
+| count(name) | price |
++-------------+-------+
+|           2 | 10000 |
++-------------+-------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql>
