@@ -1,0 +1,36 @@
+
+mysql> use mobiles;
+Database changed
+mysql> select * from device;
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
++----+---------+-----------+------------+-----------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select avg(price) from device;
++------------+
+| avg(price) |
++------------+
+| 32000.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select name,
+    -> serial_no,
+    -> user_name,
+    -> price from device
+    -> where price > (select avg(price)
+    -> from device);
++---------+-----------+-----------+-------+
+| name    | serial_no | user_name | price |
++---------+-----------+-----------+-------+
+| vivo    |     12345 | iqoo      | 50000 |
+| samsung |     12345 | srinath   | 60000 |
++---------+-----------+-----------+-------+
+2 rows in set (0.01 sec)
