@@ -1,0 +1,61 @@
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from device;
++----+-----------+-----------+------------+-----------+-------+
+| id | name      | serial_no | model_name | user_name | price |
++----+-----------+-----------+------------+-----------+-------+
+|  1 | samsung   |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo      |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo      |     12345 | ran        | yogesh    | 30000 |
+|  4 | oneplus   |     12345 | dg         | srinath   | 60000 |
+|  5 | apple     |     12345 | dg         | srinath   | 10000 |
+|  6 | oppo_vivo |     12345 | gd         | user      | 70000 |
++----+-----------+-----------+------------+-----------+-------+
+6 rows in set (0.00 sec)
+mysql> create view detailsview as select name,user_name from device where id >4;\c
+ERROR 1050 (42S01): Table 'detailsview' already exists
+
+mysql> select * from detailsview;
++---------+-----------+
+| name    | user_name |
++---------+-----------+
+| samsung | srinath   |
+| vivo    | iqoo      |
+| iqoo    | yogesh    |
++---------+-----------+
+3 rows in set (0.02 sec)
+
+
+mysql> use college;
+Database changed
+mysql> select * from student;
++----+-------------------+------+------+-----------+
+| id | name              | mark | age  | mobile_no |
++----+-------------------+------+------+-----------+
+|  1 | gdfghw            |   84 |   22 |    126789 |
+|  3 | azay              |   85 |   21 | 987654321 |
+|  4 | gdfghw            |   84 |   22 | 123456789 |
+|  5 | akshay            |   84 |   22 | 999999999 |
+|  6 | srinath_chamarthi |   90 |   24 |  98765432 |
++----+-------------------+------+------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> create index mark on student(id);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+m
+mysql> show index from student;
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table   | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| student |          0 | PRIMARY  |            1 | id          | A         |           5 |     NULL | NULL   |      | BTREE      |         |               |
+| student |          1 | name     |            1 | id          | A         |           5 |     NULL | NULL   |      | BTREE      |         |               |
+| student |          1 | mark     |            1 | id          | A         |           5 |     NULL | NULL   |      | BTREE      |         |               |
++---------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+
+
