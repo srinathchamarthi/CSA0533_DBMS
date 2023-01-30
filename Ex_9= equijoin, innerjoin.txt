@@ -1,0 +1,85 @@
+
+mysql> use college;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> use mobiles;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_mobiles |
++-------------------+
+| device            |
+| shipment          |
++-------------------+
+2 rows in set (0.01 sec)
+
+mysql> select * from device;
++----+---------+-----------+------------+-----------+-------+
+| id | name    | serial_no | model_name | user_name | price |
++----+---------+-----------+------------+-----------+-------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 |
++----+---------+-----------+------------+-----------+-------+
+5 rows in set (0.01 sec)
+
+mysql>
+mysql> select * from shipment;
++------------+-------+----------+
+| mobile_num | model | location |
++------------+-------+----------+
+| apple      |   321 | chennai  |
+| vivo       |   123 | chennai  |
++------------+-------+----------+
+2 rows in set (0.01 sec)
+
+mysql> select * from device
+    -> join shipment;
++----+---------+-----------+------------+-----------+-------+------------+-------+----------+
+| id | name    | serial_no | model_name | user_name | price | mobile_num | model | location |
++----+---------+-----------+------------+-----------+-------+------------+-------+----------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 | apple      |   321 | chennai  |
+|  1 | samsung |     12345 | dg         | srinath   | 10000 | vivo       |   123 | chennai  |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 | apple      |   321 | chennai  |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 | vivo       |   123 | chennai  |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 | apple      |   321 | chennai  |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 | vivo       |   123 | chennai  |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 | apple      |   321 | chennai  |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 | vivo       |   123 | chennai  |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 | apple      |   321 | chennai  |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 | vivo       |   123 | chennai  |
++----+---------+-----------+------------+-----------+-------+------------+-------+----------+
+10 rows in set (0.00 sec)
+
+
+mysql> select * from device
+    -> join shipment;
++----+---------+-----------+------------+-----------+-------+------------+-------+----------+
+| id | name    | serial_no | model_name | user_name | price | mobile_num | model | location |
++----+---------+-----------+------------+-----------+-------+------------+-------+----------+
+|  1 | samsung |     12345 | dg         | srinath   | 10000 | apple      |   321 | chennai  |
+|  1 | samsung |     12345 | dg         | srinath   | 10000 | vivo       |   123 | chennai  |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 | apple      |   321 | chennai  |
+|  2 | vivo    |     12345 | zs         | iqoo      | 50000 | vivo       |   123 | chennai  |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 | apple      |   321 | chennai  |
+|  3 | iqoo    |     12345 | ran        | yogesh    | 30000 | vivo       |   123 | chennai  |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 | apple      |   321 | chennai  |
+|  4 | samsung |     12345 | dg         | srinath   | 60000 | vivo       |   123 | chennai  |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 | apple      |   321 | chennai  |
+|  5 | apple   |     12345 | dg         | srinath   | 10000 | vivo       |   123 | chennai  |
++----+---------+-----------+------------+-----------+-------+------------+-------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select device.name,shipment.model
+    -> from device
+    -> inner join shipment on device.serial_no = shipment.mobile_num;
+Empty set, 10 warnings (0.01 sec)
