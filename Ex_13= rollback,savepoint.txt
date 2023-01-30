@@ -1,0 +1,77 @@
+
+mysql> use shipment;
+ERROR 1049 (42000): Unknown database 'shipment'
+mysql> use mobiles;
+Database changed
+mysql> select* from shipment;
++------------+-------+----------+
+| mobile_num | model | location |
++------------+-------+----------+
+| apple      |   321 | chennai  |
+| vivo       |   123 | chennai  |
++------------+-------+----------+
+2 rows in set (0.01 sec)
+
+mysql> insert into shipment values("iqoo", 213,"delhi");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from shipment;
++------------+-------+----------+
+| mobile_num | model | location |
++------------+-------+----------+
+| apple      |   321 | chennai  |
+| iqoo       |   213 | delhi    |
+| vivo       |   123 | chennai  |
++------------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> delete from shipment where model=213;\
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from shipment;
++------------+-------+----------+
+| mobile_num | model | location |
++------------+-------+----------+
+| apple      |   321 | chennai  |
+| vivo       |   123 | chennai  |
++------------+-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from shipment;
++------------+-------+----------+
+| mobile_num | model | location |
++------------+-------+----------+
+| apple      |   321 | chennai  |
+| vivo       |   123 | chennai  |
++------------+-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> update shipment set model = model + 1;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> savepoint samplesavepoint;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into shipment values("iqoo",213,"delhi");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> rollback to savepoint samplesavepoint;
+ERROR 1305 (42000): SAVEPOINT samplesavepoint does not exist
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from shipment;
++------------+-------+----------+
+| mobile_num | model | location |
++------------+-------+----------+
+| apple      |   322 | chennai  |
+| iqoo       |   213 | delhi    |
+| vivo       |   124 | chennai  |
++------------+-------+----------+
+3 rows in set (0.02 sec)
+
+mysql>
